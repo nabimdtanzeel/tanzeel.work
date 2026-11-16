@@ -1,0 +1,6 @@
+{
+  "name": "Portfolio",
+  "description": "Portfolio of Tanzeel — editor, motion designer, and creative professional crafting visual stories through precision and craft.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

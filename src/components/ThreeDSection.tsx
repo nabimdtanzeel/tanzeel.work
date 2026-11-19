@@ -218,7 +218,7 @@ export default function ThreeDSection({}: ThreeDSectionProps) {
     <footer
       id="three-d-section"
       ref={sectionRef}
-      className="w-full h-[100svh] relative overflow-hidden flex flex-col justify-between snap-start snap-always shrink-0 bg-black text-white select-none"
+      className="w-full h-[100svh] relative overflow-hidden flex flex-col justify-between shrink-0 bg-black text-white select-none"
     >
       <video
         ref={videoRef}

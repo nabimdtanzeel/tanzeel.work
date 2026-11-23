@@ -157,16 +157,16 @@ export default function OfflineFooterSection({ onNavigateToTop }: OfflineFooterS
       <ParallaxLayer
         pageIndex={3}
         layer="foreground"
-        className="relative z-10 w-full max-w-[1100px] mx-auto flex flex-col items-center justify-center text-center px-6 mt-auto mb-16 sm:mb-24 md:mb-28"
+        className="relative z-10 w-full max-w-[1100px] mx-auto flex flex-col items-center justify-center text-center px-6 mt-auto mb-[18vh] sm:mb-[20vh] lg:mb-28"
       >
         {/* Standalone Social Logos (middle, just above Wanna connect?) */}
         <div
-          className="mb-8 sm:mb-10 flex flex-row items-center justify-center gap-8 sm:gap-12"
+          className="mb-6 sm:mb-8 md:mb-10 flex flex-row items-center justify-center gap-3 sm:gap-10 md:gap-12"
         >
           {/* Instagram Logo */}
           <div data-anim="pop" style={{ '--i': 0 } as React.CSSProperties}>
             <MagneticPillButton
-              href="https://www.instagram.com/tanzeellllllll/"
+              href="https://www.instagram.com/tanzeelllllllll/"
               target="_blank"
               rel="noopener noreferrer"
               title="Instagram"
@@ -249,6 +249,46 @@ export default function OfflineFooterSection({ onNavigateToTop }: OfflineFooterS
               </svg>
             </MagneticPillButton>
           </div>
+
+          {/* Discord Logo */}
+          <div data-anim="pop" style={{ '--i': 2 } as React.CSSProperties}>
+            <MagneticPillButton
+              href="https://discord.com/users/767656399026913311"
+              target="_blank"
+              rel="noopener noreferrer"
+              title="Discord"
+              ariaLabel="Visit Discord"
+            >
+              {/* Realistic Full-Color Discord Logo */}
+              <svg
+                className="w-20 h-20 sm:w-[88px] sm:h-[88px] transition-transform duration-250 ease-out group-hover:scale-110 shrink-0 drop-shadow-[0_4px_16px_rgba(0,0,0,0.45)]"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <defs>
+                  <linearGradient id="discord-logo-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#6B77FF" />
+                    <stop offset="55%" stopColor="#5865F2" />
+                    <stop offset="100%" stopColor="#434ECA" />
+                  </linearGradient>
+                  <linearGradient id="discord-logo-shine" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%" stopColor="#FFFFFF" stopOpacity="0.22" />
+                    <stop offset="45%" stopColor="#FFFFFF" stopOpacity="0" />
+                  </linearGradient>
+                </defs>
+                <rect x="1.5" y="1.5" width="21" height="21" rx="5.5" fill="url(#discord-logo-grad)" />
+                <rect x="1.5" y="1.5" width="21" height="21" rx="5.5" fill="url(#discord-logo-shine)" />
+                <g transform="translate(5.5, 7.07) scale(0.10225)">
+                  <path
+                    fill="#FFFFFF"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z"
+                  />
+                </g>
+              </svg>
+            </MagneticPillButton>
+          </div>
         </div>
 
         {/* Heading: Two lines, off-white (#F2EDE0), tight line-height, with "connect?" in italic serif */}
@@ -259,14 +299,14 @@ export default function OfflineFooterSection({ onNavigateToTop }: OfflineFooterS
               : `perspective(1000px) rotateX(${-headingTilt.y}deg) rotateY(${headingTilt.x}deg)`,
             transformStyle: 'preserve-3d',
           }}
-          className="font-sans font-medium leading-[0.95] tracking-[-0.05em] text-[#F2EDE0] text-[13vw] sm:text-[clamp(44px,8vw,120px)] [text-shadow:0_4px_40px_rgba(0,0,0,0.4)] select-none text-center transition-transform duration-200 ease-out cursor-default"
+          className="font-sans font-medium leading-[0.95] tracking-[-0.05em] text-[#F2EDE0] text-[clamp(42px,min(12vw,11vh),120px)] [text-shadow:0_4px_40px_rgba(0,0,0,0.4)] select-none text-center transition-transform duration-200 ease-out cursor-default"
         >
           <span className="block transition-all duration-300">
             <Split text="Wanna" type="flip" start={2} />
           </span>
           <span className="block mt-1 sm:mt-2">
             <em
-              className="italic font-normal text-[#F2EDE0] hover:text-white transition-colors duration-300"
+              className="not-italic font-normal tracking-tight text-[#F2EDE0] hover:text-white transition-colors duration-300"
               style={{ fontFamily: "'Instrument Serif', serif" }}
             >
               <Split text="connect?" type="wipe" start={3} />

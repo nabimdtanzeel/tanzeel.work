@@ -7,6 +7,7 @@ import CustomCursor from './components/CustomCursor';
 import ScrollProgressIndicator from './components/ScrollProgressIndicator';
 import { ParallaxProvider } from './context/ParallaxContext';
 import { useScrollScrub } from './lib/scrollScrub';
+import { useTouchPhysics } from './lib/touchPhysics';
 
 const SECTION_IDS = [
   'hero',
@@ -17,6 +18,7 @@ const SECTION_IDS = [
 
 export default function App() {
   useScrollScrub();
+  useTouchPhysics();
   const containerRef = useRef<HTMLDivElement>(null);
   const activeNavTargetRef = useRef<{ index: number; expiresAt: number } | null>(null);
 

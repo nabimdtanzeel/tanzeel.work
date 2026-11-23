@@ -182,10 +182,10 @@ export default function HeroSection({ onNavigateToDesignWork, onNavigateTo3D, on
           />
         </ParallaxLayer>
 
-        {/* Navbar: Absolutely positioned top-center, black pill hanging from top edge - FIXED */}
+        {/* Navbar: Absolutely positioned top-center, black pill anchored to top edge */}
         <nav
           id="hero-navbar"
-          className="absolute top-0 left-1/2 -translate-x-1/2 z-30 bg-black rounded-b-2xl md:rounded-b-3xl px-4 py-2 sm:px-6 md:px-8 md:py-2.5 shadow-2xl flex items-center justify-center gap-3 sm:gap-6 md:gap-12 lg:gap-14"
+          className="absolute top-0 left-1/2 -translate-x-1/2 z-30 bg-black rounded-b-2xl md:rounded-b-3xl px-4 py-2 sm:px-6 md:px-8 md:py-2.5 shadow-2xl flex items-center justify-center gap-3 sm:gap-6 md:gap-12 lg:gap-14 max-w-full"
         >
           {NAV_ITEMS.map((item, idx) => {
             const anim = idx === 1 ? 'pop' : 'drop';
@@ -202,18 +202,18 @@ export default function HeroSection({ onNavigateToDesignWork, onNavigateTo3D, on
                   item === 'Connect'
                     ? '#offline-footer-section'
                     : item === 'Design Work'
-                    ? '#design-work'
-                    : item === 'Creative Visuals'
                     ? '#three-d-section'
+                    : item === 'Creative Visuals'
+                    ? '#design-work'
                     : `#${item.toLowerCase().replace(/\s+/g, '-')}`
                 }
                 onClick={
                   item === 'Connect'
                     ? handlePage4Click
                     : item === 'Design Work'
-                    ? handleDesignWorkClick
-                    : item === 'Creative Visuals'
                     ? handle3DClick
+                    : item === 'Creative Visuals'
+                    ? handleDesignWorkClick
                     : undefined
                 }
               />
@@ -226,79 +226,75 @@ export default function HeroSection({ onNavigateToDesignWork, onNavigateTo3D, on
         <ParallaxLayer
           pageIndex={0}
           layer="foreground"
-          className="absolute bottom-0 left-0 right-0 z-20 p-4 sm:p-6 md:p-8 lg:p-10 xl:p-12 pb-3 sm:pb-5 md:pb-6 lg:pb-8"
+          className="relative z-20 mt-auto w-full px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 pt-16 sm:pt-20 pb-4 sm:pb-6 md:pb-8"
         >
-          <div id="hero-bottom-content">
-            <div className="grid grid-cols-1 lg:grid-cols-12 items-end gap-6 lg:gap-8 xl:gap-10">
-              {/* Left 8 columns: Giant Heading with Heading Parallax and cursor 3D depth */}
-              <div className="lg:col-span-8 flex flex-col justify-end">
-                <ParallaxLayer pageIndex={0} layer="heading">
-                  <h1
-                    id="hero-title"
-                    className="select-none flex items-baseline tracking-[-0.07em] font-medium leading-[0.85] text-[26vw] sm:text-[24vw] md:text-[22vw] lg:text-[20vw] xl:text-[19vw] 2xl:text-[20vw] transition-transform duration-200 ease-out"
-                    style={{
-                      color: '#E1E0CC',
-                      transform: `perspective(1000px) rotateX(${-mouseTilt.y}deg) rotateY(${mouseTilt.x}deg)`,
-                      transformStyle: 'preserve-3d',
-                    }}
+          <div
+            id="hero-bottom-content"
+            className="flex flex-col items-start justify-end gap-4 sm:gap-5 md:gap-6 w-full"
+          >
+            {/* Heading with Heading Parallax and cursor 3D depth */}
+            <ParallaxLayer pageIndex={0} layer="heading" className="max-w-full">
+              <h1
+                id="hero-title"
+                className="select-none inline-flex items-baseline tracking-[-0.07em] font-medium leading-[0.85] text-[clamp(3.5rem,18vw,12rem)] max-w-full transition-transform duration-200 ease-out"
+                style={{
+                  color: '#E1E0CC',
+                  transform: `perspective(1000px) rotateX(${-mouseTilt.y}deg) rotateY(${mouseTilt.x}deg)`,
+                  transformStyle: 'preserve-3d',
+                }}
+              >
+                {headingWords.map((word) => (
+                  <span
+                    key={word}
+                    className="inline-flex overflow-visible relative items-baseline"
                   >
-                    {headingWords.map((word) => (
-                      <span
-                        key={word}
-                        className="inline-flex overflow-visible relative items-baseline"
-                      >
-                        <motion.span
-                          whileHover={{ scale: 1.03 }}
-                          className="inline-block cursor-default transition-all duration-300"
-                          style={{ color: '#E1E0CC' }}
-                        >
-                          <Split text={word} type="blur-up" />
-                        </motion.span>
-                      </span>
-                    ))}
-                    {/* Superscript asterisk with interactive spin */}
-                    <span
-                      data-anim="glow"
-                      style={{ '--i': 1 } as React.CSSProperties}
-                      className="inline-block"
+                    <motion.span
+                      whileHover={{ scale: 1.03 }}
+                      className="inline-block cursor-default transition-all duration-300"
+                      style={{ color: '#E1E0CC' }}
                     >
-                      <motion.sup
-                        whileHover={{ rotate: 180, scale: 1.4 }}
-                        className="font-serif italic font-normal text-[0.4em] align-super ml-0.5 sm:ml-1 select-none leading-none inline-block cursor-pointer"
-                        style={{ color: '#E1E0CC' }}
-                        title="*"
-                      >
-                        *
-                      </motion.sup>
-                    </span>
-                  </h1>
-                </ParallaxLayer>
-              </div>
-
-              {/* Right 4 columns: Description + Magnetic CTA Button */}
-              <div className="lg:col-span-4 flex flex-col justify-end items-start space-y-4 sm:space-y-5 md:space-y-6 pb-2 lg:pb-5 xl:pb-7">
-                {/* Description Paragraph with cursor highlight */}
-                <p
-                  id="hero-description"
-                  data-anim="blur-up"
-                  className="text-primary/70 text-xs sm:text-sm md:text-base max-w-sm lg:max-w-xs xl:max-w-sm tracking-normal cursor-default transition-colors duration-250 hover:text-white/95"
-                  style={{
-                    '--i': 2,
-                    lineHeight: '1.2',
-                    color: 'rgba(222, 219, 200, 0.7)',
-                  } as React.CSSProperties}
+                      <Split text={word} type="blur-up" />
+                    </motion.span>
+                  </span>
+                ))}
+                {/* Superscript asterisk with interactive spin */}
+                <span
+                  data-anim="glow"
+                  style={{ '--i': 1 } as React.CSSProperties}
+                  className="inline-block shrink-0"
                 >
-                  Editor, motion designer, and creative professional — crafting
-                  visual stories through precision and craft.
-                </p>
+                  <motion.sup
+                    whileHover={{ rotate: 180, scale: 1.4 }}
+                    className="font-serif italic font-normal text-[0.4em] align-super ml-0.5 sm:ml-1 select-none leading-none inline-block cursor-pointer"
+                    style={{ color: '#E1E0CC' }}
+                    title="*"
+                  >
+                    *
+                  </motion.sup>
+                </span>
+              </h1>
+            </ParallaxLayer>
 
-                {/* Pill-shaped Magnetic CTA Button */}
-                <div data-anim="pop" style={{ '--i': 3 } as React.CSSProperties}>
-                  <MagneticCTAButton
-                    onClick={handleDesignWorkClick}
-                  />
-                </div>
-              </div>
+            {/* Description Paragraph with cursor highlight */}
+            <p
+              id="hero-description"
+              data-anim="blur-up"
+              className="text-primary/70 text-xs sm:text-sm md:text-base max-w-sm md:max-w-md tracking-normal cursor-default transition-colors duration-250 hover:text-white/95"
+              style={{
+                '--i': 2,
+                lineHeight: '1.2',
+                color: 'rgba(222, 219, 200, 0.7)',
+              } as React.CSSProperties}
+            >
+              Editor, motion designer, and creative professional — crafting
+              visual stories through precision and craft.
+            </p>
+
+            {/* Pill-shaped Magnetic CTA Button */}
+            <div data-anim="pop" style={{ '--i': 3 } as React.CSSProperties}>
+              <MagneticCTAButton
+                onClick={handleDesignWorkClick}
+              />
             </div>
           </div>
         </ParallaxLayer>

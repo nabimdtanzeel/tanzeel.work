@@ -96,8 +96,8 @@ const ReelCard = memo(function ReelCard({
       }}
       className={`group relative ${
         isLandscape
-          ? 'aspect-video w-full max-w-lg lg:max-w-xl mx-auto'
-          : 'aspect-[9/16] w-full max-w-[210px] sm:max-w-[240px] md:max-w-[260px] max-h-[62vh] mx-auto'
+          ? 'aspect-video w-full max-w-[min(100%,calc(22vh*16/9))] md:max-w-[min(100%,calc(42vh*16/9),32rem)] lg:max-w-[min(100%,calc(46vh*16/9),36rem)] mx-auto'
+          : 'aspect-[9/16] w-full max-w-[min(100%,calc(30vh*9/16))] md:max-w-[min(100%,calc(46vh*9/16),240px)] lg:max-w-[min(100%,calc(50vh*9/16),260px)] mx-auto'
       } rounded-2xl md:rounded-3xl overflow-hidden liquid-glass transition-all duration-300 shadow-2xl bg-black/70 border ${
         isDragOver
           ? 'border-primary ring-2 ring-primary/50 scale-[1.02]'
@@ -293,7 +293,7 @@ function MagneticContinueButton({ onClick }: { onClick?: () => void }) {
       onMouseLeave={onMouseLeave}
       data-cursor="pointer"
       style={style}
-      className="liquid-glass rounded-full px-10 sm:px-14 py-2.5 sm:py-3.5 text-sm sm:text-base text-foreground mt-4 sm:mt-6 hover:border-white/40 active:scale-95 cursor-pointer"
+      className="liquid-glass rounded-full px-10 sm:px-14 py-2.5 sm:py-3.5 text-sm sm:text-base text-foreground mt-1 sm:mt-2 hover:border-white/40 active:scale-95 cursor-pointer"
     >
       Continue
     </button>
@@ -435,7 +435,7 @@ export default function VelorahSection({ onNavigateToTop, onNavigateToPage3 }: V
     <section
       ref={sectionRef}
       id="design-work"
-      className="w-full h-screen min-h-screen relative overflow-clip flex flex-col justify-between shrink-0 bg-background text-foreground select-none py-6 sm:py-8 md:py-10"
+      className="w-full h-screen min-h-screen relative overflow-clip flex flex-col justify-between shrink-0 bg-background text-foreground select-none py-3 sm:py-5 lg:py-8"
     >
       {/* Background Layer with Parallax & Bleed */}
       <ParallaxLayer
@@ -457,33 +457,29 @@ export default function VelorahSection({ onNavigateToTop, onNavigateToPage3 }: V
       </ParallaxLayer>
 
       <header className="relative z-10 w-full shrink-0">
-        <div className="flex row justify-between items-center px-6 sm:px-8 py-3 sm:py-4 max-w-7xl mx-auto w-full">
+        <div className="flex row justify-between items-center px-6 sm:px-8 py-2 sm:py-3 max-w-7xl mx-auto w-full">
           <div data-anim="drop" style={{ '--i': 0 } as React.CSSProperties}>
             <MagneticHomeLink onClick={handleHomeClick} />
           </div>
         </div>
       </header>
 
-      <main className="relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-6 my-auto max-w-7xl w-full mx-auto gap-6 sm:gap-8">
+      <main className="relative z-10 flex flex-col items-center justify-center text-center px-4 sm:px-6 my-auto max-w-7xl w-full mx-auto gap-3 sm:gap-5 lg:gap-6 min-h-0">
         <ParallaxLayer pageIndex={1} layer="heading">
           <h1
-            className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.05] tracking-[-1.5px] max-w-4xl font-normal text-foreground cursor-default transition-all duration-300"
+            className="text-[clamp(1.35rem,3.6vw,3.5rem)] leading-[1.05] tracking-[-0.03em] max-w-4xl font-normal text-foreground cursor-default transition-all duration-300"
             style={{ fontFamily: "'Instrument Serif', serif" }}
           >
-            <Split text="Stacking" type="blur-up" start={0} />
+            <Split text="Craft" type="blur-up" start={0} />
             <em className="not-italic text-muted-foreground hover:text-white transition-colors">
-              <Split text="skills" type="flip" start={1} />
+              <Split text="In" type="flip" start={1} />
             </em>
-            <Split text="with" type="blur-up" start={2} />
-            <em className="not-italic text-muted-foreground hover:text-white transition-colors">
-              <Split text="every" type="flip" start={3} />
-              <Split text="experience." type="blur-up" start={4} />
-            </em>
+            <Split text="Motion" type="blur-up" start={2} />
           </h1>
         </ParallaxLayer>
 
         <ParallaxLayer pageIndex={1} layer="midground" className="w-full">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 lg:gap-10 w-full max-w-6xl mx-auto px-4">
+          <div className="flex flex-col md:flex-row items-center justify-center gap-3 sm:gap-5 lg:gap-10 w-full max-w-6xl mx-auto px-2 sm:px-4">
             {/* Leftmost: Reel 3 (Landscape Reel - 16:9) */}
             <div
               data-anim="slide-left"
@@ -505,12 +501,12 @@ export default function VelorahSection({ onNavigateToTop, onNavigateToPage3 }: V
             </div>
 
             {/* Right side: Reel 01 and Reel 02 side by side (Authentic 9:16 vertical phone reels) */}
-            <div className="flex flex-row items-center justify-center gap-4 sm:gap-6 w-full md:w-1/2">
+            <div className="flex flex-row items-center justify-center gap-3 sm:gap-5 w-full md:w-1/2">
               {reel1 && (
                 <div
                   data-anim="zoom"
                   style={{ '--i': 3 } as React.CSSProperties}
-                  className="w-1/2 max-w-[210px] sm:max-w-[240px] md:max-w-[260px] flex justify-center"
+                  className="w-1/2 max-w-[min(46%,calc(30vh*9/16))] md:max-w-[min(48%,calc(46vh*9/16),240px)] lg:max-w-[min(48%,calc(50vh*9/16),260px)] flex justify-center"
                 >
                   <ReelCard
                     key={reel1.slot}
@@ -527,7 +523,7 @@ export default function VelorahSection({ onNavigateToTop, onNavigateToPage3 }: V
                 <div
                   data-anim="slide-right"
                   style={{ '--i': 4 } as React.CSSProperties}
-                  className="w-1/2 max-w-[210px] sm:max-w-[240px] md:max-w-[260px] flex justify-center"
+                  className="w-1/2 max-w-[min(46%,calc(30vh*9/16))] md:max-w-[min(48%,calc(46vh*9/16),240px)] lg:max-w-[min(48%,calc(50vh*9/16),260px)] flex justify-center"
                 >
                   <ReelCard
                     key={reel2.slot}

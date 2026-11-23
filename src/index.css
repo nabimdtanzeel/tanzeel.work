@@ -463,3 +463,7 @@ body {
     opacity: 0 !important;
   }
 }
+
+@media (hover: none) and (pointer: coarse) {
+  [data-anim] { -webkit-touch-callout: none; -webkit-tap-highlight-color: transparent; }
+}
